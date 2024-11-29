@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Floppa Maps</title>
+
+  <!-- Style CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <!-- Leaflet Routing Machine CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+
+  <!-- Dexie.js -->
+  <script src="https://unpkg.com/dexie@latest/dist/dexie.min.js"></script>
+
+  <!-- Leaflet JS -->
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Leaflet Routing Machine JS -->
+  <script defer src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+  <!-- Skrypt JS -->
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div class="sidebar">
+    <h1 class="logo">Floppa maps</h1>
+
+    <ul class="workouts">
+      <form class="form hidden">
+        <div class="form__row">
+          <label class="form__label">Kategoria</label>
+          <select class="form__input form__input--type">
+            <option value="roslina">Roślina</option>
+            <option value="grzyb">Grzyb</option>
+            <option value="atrakcja">Atrakcja</option>
+            <option value="szkolka">Szkółka</option>
+          </select>
+        </div>
+        <div class="form__row">
+          <label class="form__label">Opis</label>
+          <input class="form__input form__input--description" placeholder="Wpisz opis" />
+        </div>
+        <button class="form__btn">Dodaj</button>
+      </form>
+
+      <button class="add-current-location-btn">Dodaj znacznik w mojej lokalizacji</button>
+    </ul>
+  </div>
+
+  <div id="map"></div>
+
+  <!-- Przycisk pełnoekranowy dla mapy -->
+  <button class="fullscreen-btn">Pokaż mapę na pełnym ekranie</button>
+</body>
+
+</html>

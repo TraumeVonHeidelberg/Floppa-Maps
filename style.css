@@ -1,0 +1,324 @@
+/* Usunięto wszelkie animacje i przejścia */
+:root {
+  --color-brand--1: #ffb545; /* Grzyb */
+  --color-brand--2: #00c46a; /* Roślina */
+  --color-brand--3: #1e90ff; /* Atrakcja */
+  --color-brand--4: #ff0000; /* Szkółka */
+  --color-dark--1: #2d3439;
+  --color-dark--2: #42484d;
+  --color-light--1: #aaa;
+  --color-light--2: #ececec;
+  --color-light--3: rgb(214, 222, 224);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  color: var(--color-light--2);
+  font-weight: 400;
+  line-height: 1.6;
+  height: 100vh;
+  overscroll-behavior-y: none;
+
+  background-color: #fff;
+  display: flex;
+}
+
+.sidebar {
+  flex-basis: 50rem;
+  background-color: var(--color-dark--1);
+  padding: 3rem 5rem 4rem 5rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+.logo {
+  color:#dcdcdf;
+  font-size: 3.6rem;
+  height: 5.2rem;
+  align-self: center;
+  margin-bottom: 4rem;
+}
+
+.workouts {
+  list-style: none;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.workouts::-webkit-scrollbar {
+  width: 0;
+}
+
+/* FORMULARZ */
+.form {
+  background-color: var(--color-dark--2);
+  border-radius: 5px;
+  padding: 1.5rem 2.75rem;
+  margin-bottom: 1.75rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.form.hidden {
+  display: none;
+}
+
+.form__row {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form__input {
+  width: 100%;
+  padding: 0.5rem 1.1rem;
+  font-family: inherit;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 3px;
+  background-color: var(--color-light--3);
+  transition: all 0.2s;
+}
+
+.form__input:focus {
+  outline: none;
+  background-color: #fff;
+}
+
+.form__btn {
+  padding: 0.7rem 1rem;
+  font-size: 1.6rem;
+  background-color: var(--color-brand--1);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.form__btn:hover {
+  background-color: #eaa23b;
+}
+
+/* Przycisk dodawania znacznika w aktualnej lokalizacji */
+.add-current-location-btn {
+  padding: 0.7rem 1rem;
+  font-size: 1.6rem;
+  background-color: var(--color-brand--2);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.add-current-location-btn:hover {
+  background-color: #00b359;
+}
+
+/* Zwiększenie rozmiaru czcionki na urządzeniach mobilnych */
+@media (max-width: 768px) {
+  .add-current-location-btn {
+    font-size: 2rem;
+  }
+
+  .form__label,
+  .form__input,
+  .form__btn {
+    font-size: 2rem;
+  }
+
+  .workout__title {
+    font-size: 2rem;
+  }
+}
+
+/* WORKOUTS */
+.workout {
+  background-color: var(--color-dark--2);
+  border-radius: 5px;
+  padding: 1.5rem 2.25rem;
+  margin-bottom: 1.75rem;
+  cursor: pointer;
+
+  position: relative;
+}
+
+.workout--roslina {
+  border-left: 5px solid var(--color-brand--2);
+}
+
+.workout--grzyb {
+  border-left: 5px solid var(--color-brand--1);
+}
+
+.workout--atrakcja {
+  border-left: 5px solid var(--color-brand--3);
+}
+
+.workout--szkolka {
+  border-left: 5px solid var(--color-brand--4);
+}
+
+.workout__title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-right: 2.5rem;
+}
+
+.workout__delete {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-light--2);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.workout__delete:hover {
+  color: var(--color-brand--1);
+}
+
+/* MAP */
+#map {
+  flex: 1;
+  height: 100vh;
+  background-color: var(--color-light--1);
+  position: relative;
+}
+
+/* Przycisk pełnoekranowy */
+.fullscreen-btn {
+  display: block;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.7rem 1rem;
+  font-size: 1.4rem;
+  background-color: var(--color-brand--1);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.fullscreen-btn:hover {
+  background-color: #eaa23b;
+}
+
+/* POPUP STYLES */
+.leaflet-container {
+  background: var(--color-light--1);
+}
+
+.leaflet-popup .leaflet-popup-content-wrapper {
+  background-color: var(--color-dark--1);
+  color: var(--color-light--2);
+  border-radius: 5px;
+  padding-right: 0.6rem;
+}
+
+.leaflet-popup .leaflet-popup-content {
+  font-size: 1.5rem;
+}
+
+.leaflet-popup .leaflet-popup-tip {
+  background-color: var(--color-dark--1);
+}
+
+.roslina-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid var(--color-brand--2);
+}
+
+.grzyb-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid var(--color-brand--1);
+}
+
+.atrakcja-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid var(--color-brand--3);
+}
+
+.szkolka-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid var(--color-brand--4);
+}
+
+/* Pełnoekranowa mapa */
+.map-fullscreen #map {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 1000;
+}
+
+.map-fullscreen .sidebar {
+  display: none;
+}
+
+/* RESPONSYWNOŚĆ */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 1rem;
+    order: 2;
+    flex: 0 0 auto;
+    height: auto;
+    max-height: 40vh;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+
+  #map {
+    height: calc(100vh - 40vh);
+    width: 100%;
+    order: 1;
+  }
+
+  .workouts {
+    max-height: 35vh;
+  }
+
+  /* Zwiększenie rozmiaru czcionki */
+  .add-current-location-btn {
+    font-size: 2rem;
+  }
+
+  .form__label,
+  .form__input,
+  .form__btn {
+    font-size: 2rem;
+  }
+
+  .workout__title {
+    font-size: 2rem;
+  }
+}
